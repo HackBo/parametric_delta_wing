@@ -9,7 +9,7 @@ We're starting with this delta: http://www.rcgroups.com/forums/showthread.php?t=
 
 This is what a delta looks like in OpenSCAD.
 
-[[https://raw.githubusercontent.com/HackBo/parametric_delta_wing/master/preview.png|alt=Preview of delta in OpenSCAD.]]
+![Preview of delta in OpenSCAD.](https://raw.githubusercontent.com/HackBo/parametric_delta_wing/master/preview.png)
 
 # Authors
 
