@@ -14,6 +14,8 @@ slot_start_back = (21 / 83) * length;
 prop_dm_inches = 8;
 prop_dm_mm = prop_dm_inches * INCHES_TO_MM;
 
+// Approximation for prop reduction slot. See: http://www.rcgroups.com/forums/showthread.php?t=1608266
+
 /*
      slot_p4___________slot_p5
            /           \
