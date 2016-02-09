@@ -13,5 +13,5 @@ This is what a delta looks like in OpenSCAD.
 
 # Authors
 
-Nelson Castillo <nelsoneci@gmail.com>
-Camilo Valenzuela <cmsvalenzuela@gmail.com>
+* Nelson Castillo <nelsoneci@gmail.com>
+* Camilo Valenzuela <cmsvalenzuela@gmail.com>
