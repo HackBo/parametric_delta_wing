@@ -1,4 +1,4 @@
-# parametric_delta_wing
+# Parametric Delta Wing
 
 Generate plans for delta wings by changing parameters.
 This is better than using a design that is hard to change.
