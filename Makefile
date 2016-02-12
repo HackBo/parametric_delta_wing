@@ -10,4 +10,4 @@ DEPS=lasercut/lasercut.scad
 	openscad $< -o $@
 
 clean:
-	rm *.scad_2d  *.csg
+	rm -f *.dxf *.scad_2d  *.csg
