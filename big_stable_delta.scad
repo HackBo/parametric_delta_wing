@@ -49,24 +49,15 @@ wing_p3 = [wingspan / 2, length];
 wing_p4 = [0, length / 5];
 wing_p5 = [0, 0];
 
-wing_polygon = [wing_p1, wing_p2, wing_p3, wing_p4, wing_p5];
+wing_polygon = concat(concat([wing_p1, wing_p2], slot_polygon), [wing_p3, wing_p4, wing_p5]);
+lasercutout(thickness=thickness, points=wing_polygon);
 
 //Skid 
 
 angle = atan((length - length / 5.0) / (wingspan / 2.0)) ;
-angle_rad=angle*(PI/180);
+angle_rad =angle * (PI / 180);
 
-//echo(angle_rad);
 
 skid_dist_from_center = prop_dm_mm * 1.25 / 2.0;
 skid_len = (wingspan / 2.0 - skid_dist_from_center) * tan(angle) + length / 5.0;
 
-//echo(skid_len);
-
-
-
-
-difference() {
-  lasercutout(thickness=thickness, points=wing_polygon);
-  lasercutout(thickness=thickness, points=slot_polygon);
-}
