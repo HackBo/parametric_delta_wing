@@ -52,12 +52,26 @@ wing_p5 = [0, 0];
 wing_polygon = concat(concat([wing_p1, wing_p2], slot_polygon), [wing_p3, wing_p4, wing_p5]);
 lasercutout(thickness=thickness, points=wing_polygon);
 
-//Skid 
+//Skid
 
 angle = atan((length - length / 5.0) / (wingspan / 2.0)) ;
-angle_rad =angle * (PI / 180);
+angle_rad = angle * (PI / 180);
 
 
 skid_dist_from_center = prop_dm_mm * 1.25 / 2.0;
 skid_len = (wingspan / 2.0 - skid_dist_from_center) * tan(angle) + length / 5.0;
 
+
+
+
+/*
+
+In progress..
+                                                                 ___________
+                                                                /
+                                                               /
+           _____       _____                                  /
+      ____|     |_____|     |________________________________/
+
+
+*/
