@@ -36,7 +36,7 @@ skid_height = prop_dm_mm / 2 + prop_dm_mm * 0.1 - prop_raised_above_bottom_mm;
 
 
 // Vertical stabilizer area as a percentage of the wing area (for each stabilizer).
-vert_stab_area = wing_area * 0.04;
+vert_stab_area = wing_area * 0.035;
 // Separation of the vertical stabilizers from the evelons and from the middle of the chord.
 vert_stab_separation_from_elevon = 30;
 vert_stab_separation_from_half_chord = 10;
