@@ -36,13 +36,15 @@ skid_height = prop_dm_mm / 2 + prop_dm_mm * 0.1 - prop_raised_above_bottom_mm;
 
 
 // Vertical stabilizer area at 3% of wing area (for each stabilizer).
-vert_stab_area = wing_area * 0.03;
+vert_stab_area = wing_area * 0.05;
 // Separation of the vertical stabilizers from the evelons and from the middle of the chord.
 vert_stab_separation_from_elevon = 40;
 vert_stab_separation_from_half_chord = 20;
+echo(vert_stab_separation_from_half_chord);
 vert_stab_length = skid_len / 2 - elevon_length * 1.1 - vert_stab_separation_from_elevon - vert_stab_separation_from_half_chord;
 // Computed to get the area given by the shape of the vert stab.
-vert_stab_height = (8 * vert_stab_area) / (7 * vert_stab_length);
+// vert_stab_height = (8 * vert_stab_area) / (7 * vert_stab_length);
+vert_stab_height =vert_stab_area/  (vert_stab_length + vert_stab_length / 8);
 
 // Approximation for noise reduction slot. See: http://www.rcgroups.com/forums/showthread.php?t=1608266
 
@@ -72,7 +74,6 @@ slot_p7 = [wingspan / 2, slot_start_back + _prop_slot_height - prop_dm_mm * 0.10
 
 slot_polygon = [slot_p1, slot_p2, slot_p3, slot_p4, slot_p5, slot_p6, slot_p7];
 
-
 wing_p1 = [0, 0];
 wing_p2 = [wingspan / 2, 0];
 wing_p3 = [wingspan / 2, length];
@@ -91,12 +92,12 @@ lasercutout(thickness=thickness, points=wing_polygon);
                                                                /        |
                                                               /         |
            _____       _____                                p2          |
-   _______|     |_____|     |________________________________|          |______
+   _______|     |_____|     |________________________________|          |______p6
    \                                                         p1        p5       \
-    \                                                                            \p6
-     \                                                                           |p7
-      \                                                                         /p8
-       \_______________________________________________________________________/p9
+    \                                                                            \p7
+    \                                                                            |
+      \                                                                         /p8, p9
+       \_______________________________________________________________________/p10
 
 */
 
@@ -108,5 +109,13 @@ skidb_p2 = [_skid_hole_start, skid_height + thickness + vert_stab_height / 2];
 skidb_p3 = [_skid_hole_start + vert_stab_length / 2, skid_height + thickness + vert_stab_height];
 skidb_p4 = [_skid_hole_start + vert_stab_length, skid_height + thickness + vert_stab_height];
 skidb_p5 = [_skid_hole_start + vert_stab_length, skid_height];
-vert_stab_polygon = [skidb_p1, skidb_p2, skidb_p3, skidb_p4, skidb_p5, skidb_p1];
-translate([350, 2*_skid_hole_start, -(skid_height)]) rotate([90, 0, 0]) rotate([0,270, 0]) lasercutout(thickness=thickness, points=vert_stab_polygon);
+skidb_p6 = [skid_len - elevon_length * 1.1, skid_height];
+skidb_p7 = [skid_len, skid_height / 2];
+// ...
+skidb_p10 = [skid_len - elevon_length * 1.1, 0];
+skid_front_below = [100, 0];
+skid_origin = [0, skid_height];
+
+vert_stab_polygon = [skidb_p1, skidb_p2, skidb_p3, skidb_p4, skidb_p5, skidb_p6, skidb_p7, skidb_p10, skid_front_below, skid_origin];
+// Translaton is not correct yet.
+translate([(wingspan / 2 - skid_dist_from_center), skid_len, -skid_height]) rotate([90, 0, 0]) rotate([0,270, 0]) lasercutout(thickness=thickness, points=vert_stab_polygon);
