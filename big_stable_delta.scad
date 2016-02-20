@@ -82,6 +82,8 @@ wing_p5 = [0, 0];
 
 wing_polygon = concat(concat([wing_p1, wing_p2], slot_polygon), [wing_p3, wing_p4, wing_p5]);
 lasercutout(thickness=thickness, points=wing_polygon);
+translate([wingspan, 0, +thickness]) rotate([0, 180, 0]) lasercutout(thickness=thickness, points=wing_polygon);
+
 
 //Skid
 
@@ -117,5 +119,5 @@ skid_front_below = [100, 0];
 skid_origin = [0, skid_height];
 
 vert_stab_polygon = [skidb_p1, skidb_p2, skidb_p3, skidb_p4, skidb_p5, skidb_p6, skidb_p7, skidb_p10, skid_front_below, skid_origin];
-// Translaton is not correct yet.
 translate([(wingspan / 2 - skid_dist_from_center), skid_len, -skid_height]) rotate([90, 0, 0]) rotate([0,270, 0]) lasercutout(thickness=thickness, points=vert_stab_polygon);
+translate([(wingspan / 2 + skid_dist_from_center), skid_len, -skid_height]) rotate([90, 0, 0]) rotate([0,270, 0]) lasercutout(thickness=thickness, points=vert_stab_polygon);
