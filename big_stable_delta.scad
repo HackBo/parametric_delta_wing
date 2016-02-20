@@ -32,8 +32,11 @@ skid_dist_from_center = prop_dm_mm * 1.25 / 2.0;
 skid_len = (wingspan / 2.0 - skid_dist_from_center) * tan(angle) + length / 5.0;
 skid_height = prop_dm_mm / 2 + prop_dm_mm * 0.1 - prop_raised_above_bottom_mm;
 
+
+
+
 // Vertical stabilizer area at 3% of wing area (for each stabilizer).
-vert_stab_area = wing_area * 0.04;
+vert_stab_area = wing_area * 0.03;
 // Separation of the vertical stabilizers from the evelons and from the middle of the chord.
 vert_stab_separation_from_elevon = 40;
 vert_stab_separation_from_half_chord = 20;
@@ -77,7 +80,7 @@ wing_p4 = [0, tip_chord_length];
 wing_p5 = [0, 0];
 
 wing_polygon = concat(concat([wing_p1, wing_p2], slot_polygon), [wing_p3, wing_p4, wing_p5]);
-//lasercutout(thickness=thickness, points=wing_polygon);
+lasercutout(thickness=thickness, points=wing_polygon);
 
 //Skid
 
@@ -106,5 +109,4 @@ skidb_p3 = [_skid_hole_start + vert_stab_length / 2, skid_height + thickness + v
 skidb_p4 = [_skid_hole_start + vert_stab_length, skid_height + thickness + vert_stab_height];
 skidb_p5 = [_skid_hole_start + vert_stab_length, skid_height];
 vert_stab_polygon = [skidb_p1, skidb_p2, skidb_p3, skidb_p4, skidb_p5, skidb_p1];
-//translate([100,100]) rotate([90,0,0])
-lasercutout(thickness=thickness, points=vert_stab_polygon);
+translate([350, 2*_skid_hole_start, -(skid_height)]) rotate([90, 0, 0]) rotate([0,270, 0]) lasercutout(thickness=thickness, points=vert_stab_polygon);
