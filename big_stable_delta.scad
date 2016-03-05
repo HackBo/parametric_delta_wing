@@ -16,7 +16,7 @@ tip_chord_length = length * 0.363;
 elevon_length = 80;
 
 slot_start_back = (15 / 102) * length;
-prop_dm_inches = 9;
+prop_dm_inches = 9.5;
 prop_dm_mm = prop_dm_inches * INCHES_TO_MM;
 
 // Distance of the prop tip from the bottom of the delta wing.
