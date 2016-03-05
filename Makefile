@@ -1,4 +1,4 @@
-all:big_stable_delta.dxf
+all:big_stable_delta.dxf big.dxf small.dxf
 
 DEPS=lasercut/lasercut.scad
 

@@ -1,18 +1,20 @@
 from naca import naca4
 
-INCREASE=80
 
-POINTS=500
-NACA='2412'
-WIDTH=10
-CHORD=830 + INCREASE
-FRONT_DIST=80
+#INCREASE=80
 
-POINTS=500
-NACA='2410'
 WIDTH=10
-CHORD=165 + INCREASE
-FRONT_DIST=80
+POINTS=500
+if True:
+  INCREASE=0
+  NACA='2412'
+  CHORD=830 + INCREASE
+  FRONT_DIST=80
+else:
+  INCREASE=80
+  NACA='2410'
+  CHORD=165 + INCREASE
+  FRONT_DIST=80
 
 def generate_foil():
   ret_x = []
@@ -35,6 +37,18 @@ def compute_scad():
   x.append(FRONT_DIST) ; y.append(-WIDTH/2)
   x.append(FRONT_DIST) ; y.append(WIDTH/2)
   x.append(first_x) ; y.append(WIDTH/2)
+  return x, y
+
+def generate_openscad():
+  x, y = compute_scad()
+  polygon_point = []
   for i in range(len(x)):
-    print(x[i], y[i])
-compute_scad()
+    polygon_point.append('[{}, {}]'.format(x[i], y[i]))
+  print('include <lasercut/lasercut.scad>;')
+  print('poly = [' + ','.join(polygon_point) + '];')
+  print('lasercutout(thickness={}, points=poly);'.format(5))
+
+generate_openscad()
+
+     
+#vert_stab_polygon = concat(skid_leading_curve, concat(skid_tabs, [skidb_p1, skidb_p2, skidb_p3, skidb_p4, skidb_p5, skidb_p6, skidb_p7, skidb_p8, skidb_p9,skidb_p10, skidb_p12]));
