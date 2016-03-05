@@ -10,17 +10,18 @@ INCHES_TO_MM = 25.4;
 
 thickness = 5;  // Model plane foam.
 wingspan = 1020;
-length = (83 / 102) * wingspan;
+length = (96.5 / 102) * wingspan;
+root_chord = length;
+tip_chord_length = length / 3.216666666666667;
+elevon_length = 80;
 
-elevon_length = (8 / 83) * length;
-
-slot_start_back = (21 / 83) * length;
-prop_dm_inches = 8;
+slot_start_back = (15 / 102) * length;
+prop_dm_inches = 9;
 prop_dm_mm = prop_dm_inches * INCHES_TO_MM;
 
 // Distance of the prop tip from the bottom of the delta wing.
 prop_raised_above_bottom_mm = 25;
-tip_chord_length = length / 5;
+
 
 // Area in mm^2. Used to compute the size of the vertical stabilizers.
 wing_area = wingspan * tip_chord_length + wingspan * (length - tip_chord_length) / 2;
@@ -36,7 +37,7 @@ skid_height = prop_dm_mm / 2 + prop_dm_mm * 0.1 - prop_raised_above_bottom_mm;
 
 
 // Vertical stabilizer area as a percentage of the wing area (for each stabilizer).
-vert_stab_area = wing_area * 0.035;
+vert_stab_area = wing_area * 0.04;
 // Separation of the vertical stabilizers from the evelons and from the middle of the chord.
 vert_stab_separation_from_elevon = 30;
 vert_stab_separation_from_half_chord = 10;
@@ -104,7 +105,7 @@ translate([wingspan, 0, +thickness]) rotate([0, 180, 0]) lasercutout(thickness=t
 // front of the skid.
 
 // Tabs.
-tab_width = (5 / 83) * skid_len;
+tab_width = (5 / root_chord) * skid_len;
 skid_tabs = [[tab_width * 0, skid_height + 0 * thickness],  [tab_width * 1, skid_height + 0 * thickness],  [tab_width * 1, skid_height + 1.0 * thickness],  [tab_width * 2, skid_height + 1.0 * thickness],  [tab_width * 2, skid_height + 0 * thickness],  [tab_width * 3, skid_height + 0 * thickness],  [tab_width * 3, skid_height + 1.0 * thickness],  [tab_width * 4, skid_height + 1.0 * thickness],  [tab_width * 4, skid_height + 0 * thickness]];
 
 scale_x = (14 / 61) * skid_len;
