@@ -12,7 +12,7 @@ thickness = 5;  // Model plane foam.
 wingspan = 1020;
 length = (96.5 / 102) * wingspan;
 root_chord = length;
-tip_chord_length = length / 3.216666666666667;
+tip_chord_length = length * 0.363;
 elevon_length = 80;
 
 slot_start_back = (15 / 102) * length;
