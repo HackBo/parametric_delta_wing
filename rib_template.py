@@ -5,14 +5,14 @@ from naca import naca4
 
 WIDTH=10
 POINTS=5000
-if False:
+if True:
   INCREASE=0
-  NACA='2412'
+  NACA='2410'
   CHORD=830 + INCREASE
   FRONT_DIST=80
 else:
   INCREASE=80
-  NACA='2410'
+  NACA='3412'
   CHORD=165 + INCREASE
   FRONT_DIST=80
 
