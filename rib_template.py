@@ -4,8 +4,8 @@ from naca import naca4
 #INCREASE=80
 
 WIDTH=10
-POINTS=500
-if True:
+POINTS=5000
+if False:
   INCREASE=0
   NACA='2412'
   CHORD=830 + INCREASE
